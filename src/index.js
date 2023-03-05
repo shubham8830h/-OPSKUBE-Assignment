@@ -1,10 +1,12 @@
 const express = require("express");
 const route = require("./routes/routes");
 const mongoose = require("mongoose");
+const cors=require("cors")
 const app = express();
 
 // app.use(express.json());
 app.use(express.json());
+app.use(cors())
 // app.use(bodyParser.json());
 
 mongoose
@@ -19,7 +21,7 @@ mongoose
 
 app.use("/", route);
 
-const port = 3000;
+const port = 3001;
 app.listen(port, function () {
   console.log(`Express app is connected ${port}`);
 });

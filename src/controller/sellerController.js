@@ -1,3 +1,5 @@
+const { find } = require("../models/booksModel");
+const jwt = require("jsonwebtoken");
 const sellerModel = require("../models/sellerModel");
 
 //post seller
@@ -58,13 +60,13 @@ const loginUser = async function (req, res) {
         .status(400)
         .send({ status: false, msg: "Email is Invalid Please try again !!" });
 
-    const verifyPassword = await bcrypt.compare(password, user.password);
+    // const verifyPassword = await sellerModel.find({password, user.password});
 
-    if (!verifyPassword)
-      return res.status(400).send({
-        status: false,
-        msg: "Password is Invalid Please try again !!",
-      });
+    // if (!verifyPassword)
+    //   return res.status(400).send({
+    //     status: false,
+    //     msg: "Password is Invalid Please try again !!",
+    //   });
 
     // Creating Token Using JWT //
     const token = jwt.sign(
